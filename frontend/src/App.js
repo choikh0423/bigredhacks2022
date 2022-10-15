@@ -1,13 +1,30 @@
+import logo from './logo.svg';
+import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import {
+    Navbar,
+    Nav,
+    Table,
+    FormControl,
+    Button,
+    Form,
+    Container,
+} from "react-bootstrap";
+import React, { useState, useEffect } from "react";
+import { Routes, Route, useNavigate, Outlet} from "react-router-dom";
+import Detail from './pages/Detail.js'
 import Navigation from "./components/Navbar.js";
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
 import Main from "./Main.js";
 
 function App() {
   return (
     <div className="App">
       <Navigation></Navigation>
-      <Main></Main>
+        <Routes>
+            <Route path="/" element={<Main/>} />
+            <Route path="/detail/:apt/:type" element={<Detail/>} />
+            <Route path="*" element={<div>Page not exists</div>} />
+        </Routes>
     </div>
   );
 }
