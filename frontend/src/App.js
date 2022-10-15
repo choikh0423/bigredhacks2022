@@ -14,13 +14,14 @@ import React, { useState, useEffect } from "react";
 import { Routes, Route, useNavigate, Outlet} from "react-router-dom";
 import Detail from './pages/Detail.js'
 import Navigation from "./components/Navbar.js";
+import Main from "./Main.js";
 
 function App() {
   return (
     <div className="App">
-        <Navigation></Navigation>
+      <Navigation></Navigation>
         <Routes>
-            <Route path="/" element={<div>Main Page</div>} />
+            <Route path="/" element={<Main/>} />
             <Route path="/detail/:apt/:type" element={<Detail/>} />
             <Route path="*" element={<div>Page not exists</div>} />
         </Routes>
