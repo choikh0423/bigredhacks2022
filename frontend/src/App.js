@@ -18,13 +18,11 @@ import Detail from './pages/Detail.js'
 
 
 function App() {
-  const [apt, setApt] = useState('');
-
   return (
     <div className="App">
         <Routes>
             <Route path="/" element={<div>Main Page</div>} />
-            <Route path="/detail/:apt/:type" element={<Detail input={apt}/>} />
+            <Route path="/detail/:apt/:type" element={<Detail/>} />
             <Route path="*" element={<div>Page not exists</div>} />
         </Routes>
     </div>
