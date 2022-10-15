@@ -104,3 +104,4 @@ class ApartmentViewSet(viewsets.ModelViewSet):
 
     @action(detail=True, methods=['get'])
     def get_lease_info(self, request, pk):
+        pass
