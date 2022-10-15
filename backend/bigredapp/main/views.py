@@ -1,8 +1,12 @@
 from django.shortcuts import render 
 from django.contrib.auth.models import User, Group
+
+from .serializers import ApartmentSerializer
+from .models import Apartment, LeaseData, Statistics
+from .choices import LEASE_TERM_CHOICES
 from rest_framework import viewsets
 from rest_framework import permissions
-from main.serializers import UserSerializer, CreateUserSerializer, GroupSerializer
+from main.serializers import UserSerializer, CreateUserSerializer, GroupSerializer, StatisticsSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -56,3 +60,47 @@ class GroupViewSet(viewsets.ModelViewSet):
     queryset = Group.objects.all()
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
+
+class ApartmentViewSet(viewsets.ModelViewSet):
+    """
+    API endpoint that allows Apartments to be viewed or edited.
+    """
+    queryset = Apartment.objects.all()
+    serializer_class = ApartmentSerializer
+    permission_classes = [permissions.IsAuthenticated]
+
+    @action(detail=True, methods=['get'])
+    def get_apartment_info(self, request, pk):
+
+        if "flat_type" in request.GET:
+            flat_type = request.GET['flat_type']
+            print(flat_type)
+
+        apartment = Apartment.objects.get(pk=pk)
+        serializer = self.get_serializer(apartment)
+        response_dict = {}
+        response_dict.update(serializer.data)
+
+        stat = Statistics.objects.get(apartment=pk, flat_type=flat_type).__dict__
+        response_dict['one_year_data'] = stat['one_year_data']
+        response_dict['two_year_data'] = stat['two_year_data']
+        response_dict['three_year_data'] = stat['three_year_data']
+
+        print(LEASE_TERM_CHOICES[0])
+        lease_data = LeaseData.objects.all().filter(apartment=pk, flat_type=flat_type, lease_term=LEASE_TERM_CHOICES[0][0])
+
+        price_sum = 0
+        for lease in lease_data:
+            lease_dict = lease.__dict__
+            price_sum += lease_dict["price"]
+        
+        current_average_price = price_sum / len(lease_data)
+
+        response_dict['current_price_data'] = current_average_price
+
+        
+        
+        return Response(response_dict)
+
+    @action(detail=True, methods=['get'])
+    def get_lease_info(self, request, pk):
