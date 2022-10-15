@@ -3052,6 +3052,11 @@ caniuse-lite@^1.0.0, caniuse-lite@^1.0.30001400, caniuse-lite@^1.0.30001407:
   resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001419.tgz#3542722d57d567c8210d5e4d0f9f17336b776457"
   integrity sha512-aFO1r+g6R7TW+PNQxKzjITwLOyDhVRLjW0LcwS/HCZGUUKTGNp9+IwLC4xyDSZBygVL/mxaFR3HIV6wEKQuSzw==
 
+canvasjs@^1.8.3:
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/canvasjs/-/canvasjs-1.8.3.tgz#181a526bbce09c1909431d9471f808494fe970cf"
+  integrity sha512-60eUT0VjqRgYqdIQcOkXg0Zptfbl4HefA/O51YEf1m/P0uXvE3icI/1KPrXpY9aVxn8gG/BB8DzVoTGCcyBnYg==
+
 case-sensitive-paths-webpack-plugin@^2.4.0:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/case-sensitive-paths-webpack-plugin/-/case-sensitive-paths-webpack-plugin-2.4.0.tgz#db64066c6422eed2e08cc14b986ca43796dbc6d4"
@@ -3127,7 +3132,7 @@ cjs-module-lexer@^1.0.0:
   resolved "https://registry.yarnpkg.com/cjs-module-lexer/-/cjs-module-lexer-1.2.2.tgz#9f84ba3244a512f3a54e5277e8eef4c489864e40"
   integrity sha512-cOU9usZw8/dXIXKtwa8pM0OTJQuJkxMN6w30csNRUerHfeQ5R6U3kkU/FtJeIf3M202OHfY2U8ccInBG7/xogA==
 
-classnames@^2.3.1:
+classnames@^2.2.5, classnames@^2.3.1:
   version "2.3.2"
   resolved "https://registry.yarnpkg.com/classnames/-/classnames-2.3.2.tgz#351d813bf0137fcc6a76a16b88208d2560a0d924"
   integrity sha512-CSbhY4cFEJRe6/GQzIk5qXZ4Jeg5pcsP7b5peFSDpffpe1cqjASH/n9UTjBwOp6XpMSTwQ8Za2K5V02ueA7Tmw==
@@ -7299,7 +7304,7 @@ prop-types-extra@^1.1.0:
     react-is "^16.3.2"
     warning "^4.0.0"
 
-prop-types@^15.6.2, prop-types@^15.8.1:
+prop-types@^15.6.1, prop-types@^15.6.2, prop-types@^15.8.1:
   version "15.8.1"
   resolved "https://registry.yarnpkg.com/prop-types/-/prop-types-15.8.1.tgz#67d87bf1a694f48435cf332c24af10214a3140b5"
   integrity sha512-oj87CgZICdulUohogVAR7AjlC0327U4el4L6eAvOqCeudMDVU0NThNaV+b9Df4dXgSP1gXMTnPdhfe/2qDH5cg==
@@ -7534,6 +7539,14 @@ react-scripts@5.0.1:
     workbox-webpack-plugin "^6.4.1"
   optionalDependencies:
     fsevents "^2.3.2"
+
+react-star-rating-component@^1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/react-star-rating-component/-/react-star-rating-component-1.4.1.tgz#74dc1c73493f088013331c234190b8cccad31f6b"
+  integrity sha512-i0YEvQzToS0s0GDkxn01Jy4EeLpVEyh023NXJTJ+/1+xkvhpACyD4d1YeBhYWZab53ppUnUxs5gmp75gJr3khA==
+  dependencies:
+    classnames "^2.2.5"
+    prop-types "^15.6.1"
 
 react-transition-group@^4.4.2:
   version "4.4.5"
