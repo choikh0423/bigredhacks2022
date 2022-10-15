@@ -1,0 +1,36 @@
+[{
+	"pk": 2,
+	"model": "auth.user",
+	"fields": {
+		"username": "kc677",
+		"email": "kc677@cornell.edu",
+		"password": "dummy1"
+	}
+},
+{
+	"pk": 3,
+	"model": "auth.user",
+	"fields": {
+		"username": "jl2565",
+		"email": "jl2565@cornell.edu",
+		"password": "dummy1"
+	}
+},
+{
+	"pk": 4,
+	"model": "auth.user",
+	"fields": {
+		"username": "jc2739",
+		"email": "jc2739@cornell.edu",
+		"password": "dummy1"
+	}
+},
+{
+	"pk": 5,
+	"model": "auth.user",
+	"fields": {
+		"username": "dk639",
+		"email": "dk639@cornell.edu",
+		"password": "dummy1"
+	}
+}]

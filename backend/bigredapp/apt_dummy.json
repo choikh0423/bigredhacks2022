@@ -1,0 +1,70 @@
+[{
+	"pk": 1,
+	"model": "main.apartment",
+	"fields": {
+		"name": "Collegetown Center",
+		"address": "151 Dryden Road",
+		"rating": 4.8,
+		"number_of_reviews": 96,
+		"gym": true,
+		"laundry": "No Laundry",
+		"free_wifi_rout	er": false,
+		"free_electricity": false
+	}
+},
+{
+	"pk": 2,
+	"model": "main.apartment",
+	"fields": {
+		"name": "Collegetown Crossing",
+		"address": "307 College Ave",
+		"rating": 4.1,
+		"number_of_reviews": 30,
+		"gym": true,
+		"laundry": "Shared Laundry",
+		"free_wifi_router": false,
+		"free_electricity": false
+	}
+},
+{
+	"pk": 3,
+	"model": "main.apartment",
+	"fields": {
+		"name": "312 College Ave",
+		"address": "312 College Ave",
+		"rating": 5.0,
+		"number_of_reviews": 35,
+		"gym": true,
+		"laundry": "Shared Laundry",
+		"free_wifi_router": false,
+		"free_electricity": false
+	}
+},
+{
+	"pk": 4,
+	"model": "main.apartment",
+	"fields": {
+		"name": "The Lux Apartments Ithaca",
+		"address": "112-114 Summit St",
+		"rating": 4.3,
+		"number_of_reviews": 23,
+		"gym": true,
+		"laundry": "In Place",
+		"free_wifi_router": true,
+		"free_electricity": true
+	}
+},
+{
+	"pk": 5,
+	"model": "main.apartment",
+	"fields": {
+		"name": "Fairview Apartments Ithaca",
+		"address": "100 Fairview Square",
+		"rating": 4.9,
+		"number_of_reviews": 172,
+		"gym": true,
+		"laundry": "Shared Laundry",
+		"free_wifi_router": false,
+		"free_electricity": false
+	}
+}]

@@ -1,0 +1,91 @@
+[{
+	"pk": 1,
+	"model": "main.leasedata",
+	"fields": {
+		"user": 2,
+		"apartment": 1,
+		"lease_term": "2022-2023",
+		"contract_date": "2021-08-01",
+		"lease_type": "One Year Lease",
+		"price": 1350,
+		"flat_type": "Studio"
+	}
+},
+{
+	"pk": 2,
+	"model": "main.leasedata",
+	"fields": {
+		"user": 2,
+		"apartment": 1,
+		"lease_term": "2023-2024",
+		"contract_date": "2022-10-01",
+		"lease_type": "One Year Lease",
+		"price": 1650,
+		"flat_type": "Studio"
+	}
+},
+{
+	"pk": 3,
+	"model": "main.leasedata",
+	"fields": {
+		"user": 3,
+		"apartment": 1,
+		"lease_term": "2022-2023",
+		"contract_date": "2021-10-01",
+		"lease_type": "One Year Lease",
+		"price": 1255,
+		"flat_type": "2 Bed"
+	}
+},
+{
+	"pk": 4,
+	"model": "main.leasedata",
+	"fields": {
+		"user": 3,
+		"apartment": 5,
+		"lease_term": "2022-2023",
+		"contract_date": "2021-10-01",
+		"lease_type": "One Year Lease",
+		"price": 1325,
+		"flat_type": "Studio"
+	}
+},
+{
+	"pk": 5,
+	"model": "main.leasedata",
+	"fields": {
+		"user": 5,
+		"apartment": 4,
+		"lease_term": "2022-2023",
+		"contract_date": "2021-10-01",
+		"lease_type": "One Year Lease",
+		"price": 1400,
+		"flat_type": "3 Bed"
+	}
+},
+{
+	"pk": 6,
+	"model": "main.leasedata",
+	"fields": {
+		"user": 2,
+		"apartment": 1,
+		"lease_term": "2023-2024",
+		"contract_date": "2022-10-01",
+		"lease_type": "One Year Lease",
+		"price": 1400,
+		"flat_type": "2 Bed"
+	}
+},
+{
+	"pk": 7,
+	"model": "main.leasedata",
+	"fields": {
+		"user": 3,
+		"apartment": 1,
+		"lease_term": "2023-2024",
+		"contract_date": "2022-10-01",
+		"lease_type": "One Year Lease",
+		"price": 1700,
+		"flat_type": "Studio"
+	}
+}]
