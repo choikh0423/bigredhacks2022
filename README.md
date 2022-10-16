@@ -21,3 +21,18 @@ We used React to build a user-friendly interface that sorts out recent lease con
 ### Backend
 We used Django Rest Framework to set up the basic backend architecture of our project. We created a relational database consisting of user, apartment, and lease data models. We serialized the models and defined the necessary API endpoints.
 
+## Challenges we ran into
+It was our first time building a fully-functioning website with React.
+Integrating backend server and frontend server using ngrok public url and using CORS was a challenge.
+
+## Accomplishments we’re proud of
+Our website is fully integrated!!!
+
+## What we learned
+Don’t do backend in hackathons
+We need a designer
+
+## What's next?
+- Apartment Communities
+- Official Launch
+- Expand to Other Areas
