@@ -4,11 +4,9 @@ import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import logo from "../logo.svg";
+import logo from "../IAlogo.png";
 import styled from "styled-components";
-import {useNavigate} from "react-router-dom";
-
-
+import { useNavigate } from "react-router-dom";
 
 function Navigation() {
   let navigate = useNavigate();
@@ -20,9 +18,16 @@ function Navigation() {
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <logoContainer onClick={()=>{navigate('/')}} style={{cursor: "pointer"}}>
+        <logoContainer
+          onClick={() => {
+            navigate("/");
+          }}
+          style={{ cursor: "pointer" }}
+        >
           <img src={logo} width="50" height="50" alt="logo" />
-          <Navbar.Brand>IthacaAPTS.fyi</Navbar.Brand>
+          <Navbar.Brand style={{ fontWeight: "bold", fontFamily: "Calibri" }}>
+            IthacaAPTS.fyi
+          </Navbar.Brand>
         </logoContainer>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">

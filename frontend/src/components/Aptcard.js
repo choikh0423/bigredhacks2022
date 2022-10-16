@@ -5,8 +5,6 @@ import { Routes, Link, Route, useNavigate } from "react-router-dom";
 
 function AptCard(props) {
   let navigate = useNavigate();
-
-  console.log(props);
   const aptName = props.apt.apt.aptName;
   const address = props.apt.apt.address;
   const price = props.apt.apt.price;
