@@ -10,7 +10,7 @@ from .models import Apartment, LeaseData, Statistics
 from .choices import FLAT_TYPE_CHOICES_LIST, LEASE_TERM_CHOICES, FLAT_TYPE_CHOICES
 from rest_framework import viewsets
 from rest_framework import permissions
-from main.serializers import UserSerializer, CreateUserSerializer, LeaseDataSerializer
+from main.serializers import UserSerializer, CreateUserSerializer, LeaseDataSerializer, ApartmentGeneralSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -79,7 +79,7 @@ class ApartmentViewSet(viewsets.ModelViewSet):
     @action(detail=False, methods=['get'])
     def get_apartment_info(self, request):
         apartments = Apartment.objects.all()
-        response_dict = {}
+        response_dict = {'info': []}
 
         lease_data = LeaseData.objects.all().filter(lease_term=LEASE_TERM_CHOICES[0][0])
 
@@ -90,18 +90,27 @@ class ApartmentViewSet(viewsets.ModelViewSet):
                 apartment_flat_dict[lease_dict['apartment_id']].append(lease_dict['flat_type'])
             else:
                 apartment_flat_dict[lease_dict['apartment_id']] = [lease_dict['flat_type']]
-            
-        print(apartment_flat_dict)
-                
-        print(lease_dict)
+        
         for key in apartment_flat_dict:
+            
             flat_type_list = apartment_flat_dict[key]
+            apt_info = Apartment.objects.get(pk=key).__dict__
+
             for cur_flat_type in flat_type_list:
+                res = {}
+                res['pk'] = apt_info['id']
+                res['aptName'] = apt_info['name']
+                res['address'] = apt_info['address']
+                res['rooms'] = cur_flat_type
                 specific_lease_data = LeaseData.objects.all().filter(apartment=key, flat_type=cur_flat_type, lease_term=LEASE_TERM_CHOICES[0][0])
-        apartment_dict = Apartment.objects.get(pk=lease_dict['apartment_id']).__dict__
+                price_sum = 0
+                for lease in specific_lease_data:
+                    lease_dict = lease.__dict__
+                    price_sum += lease_dict["price"]
+                res['price'] = price_sum / len(specific_lease_data)
+                response_dict['info'].append(ApartmentGeneralSerializer(res).data)
 
-
-        pass
+        return Response(response_dict)
 
     @action(detail=False, methods=['get'])
     def get_apartment_detail(self, request):

@@ -17,7 +17,13 @@ class CreateUserSerializer(serializers.HyperlinkedModelSerializer):
         # Tuple of serialized model fields (see link [2])
         fields = [ "email", "password", ]
 
-class ApartmentGeneralSerializer(serializers.HyperlinkedModelSerializer):
+class ApartmentGeneralSerializer(serializers.Serializer):
+    pk = serializers.CharField()
+    aptName = serializers.CharField()
+    rooms = serializers.IntegerField()
+    address = serializers.CharField()
+    price = serializers.IntegerField()
+
     class Meta:
         model = Apartment
         fields = ['pk', 'name', 'address', ]
