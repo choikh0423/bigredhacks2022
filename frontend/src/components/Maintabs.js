@@ -9,7 +9,6 @@ import Container from "react-bootstrap/esm/Container";
 
 function MainTabs() {
   const [key, setKey] = useState("studio");
-  const [ascending, setAscending] = useState(true);
 
   return (
     <div style={{ display: "block", padding: 10 }}>
@@ -26,65 +25,23 @@ function MainTabs() {
         className="mb-3"
       >
         <Tab eventKey="studio" title="Studio">
-          <Container>
-            <Row>
-              <Col style={{ textAlign: "right" }}>
-                <Button onClick={() => setAscending(!ascending)}>Sort</Button>
-              </Col>
-            </Row>
-          </Container>{" "}
-          <TabPage type={{ sorting: ascending, rooms: 0 }}></TabPage>
+          <TabPage type={{ rooms: 0 }}></TabPage>
         </Tab>
         <Tab eventKey="one" title="1 Bed">
-          <Container>
-            <Row>
-              <Col style={{ textAlign: "right" }}>
-                <Button onClick={() => setAscending(!ascending)}>Sort</Button>
-              </Col>
-            </Row>
-          </Container>{" "}
-          <TabPage type={{ sorting: ascending, rooms: 1 }}></TabPage>
+          <TabPage type={{ rooms: 1 }}></TabPage>
         </Tab>
 
-        <Tab eventKey="two" title="2 Bed">
-          <Container>
-            <Row>
-              <Col style={{ textAlign: "right" }}>
-                <Button onClick={() => setAscending(!ascending)}>Sort</Button>
-              </Col>
-            </Row>
-          </Container>{" "}
-          <TabPage type={{ sorting: ascending, rooms: 2 }}></TabPage>
+        <Tab eventKey="two" title="2 Beds">
+          <TabPage type={{ rooms: 2 }}></TabPage>
         </Tab>
         <Tab eventKey="three" title="3 Beds">
-          <Container>
-            <Row>
-              <Col style={{ textAlign: "right" }}>
-                <Button onClick={() => setAscending(!ascending)}>Sort</Button>
-              </Col>
-            </Row>
-          </Container>{" "}
-          <TabPage type={{ sorting: ascending, rooms: 3 }}></TabPage>
+          <TabPage type={{ rooms: 3 }}></TabPage>
         </Tab>
         <Tab eventKey="four" title="4 Beds">
-          <Container>
-            <Row>
-              <Col style={{ textAlign: "right" }}>
-                <Button onClick={() => setAscending(!ascending)}>Sort</Button>
-              </Col>
-            </Row>
-          </Container>{" "}
-          <TabPage type={{ sorting: ascending, rooms: 4 }}></TabPage>
+          <TabPage type={{ rooms: 4 }}></TabPage>
         </Tab>
         <Tab eventKey="five" title="5 or more Beds">
-          <Container>
-            <Row>
-              <Col style={{ textAlign: "right" }}>
-                <Button onClick={() => setAscending(!ascending)}>Sort</Button>
-              </Col>
-            </Row>
-          </Container>{" "}
-          <TabPage type={{ sorting: ascending, rooms: 5 }}></TabPage>
+          <TabPage type={{ rooms: 5 }}></TabPage>
         </Tab>
       </Tabs>
     </div>

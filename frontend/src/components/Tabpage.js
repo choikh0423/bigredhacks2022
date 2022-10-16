@@ -3,11 +3,15 @@ import Container from "react-bootstrap/esm/Container";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import AptCard from "./Aptcard";
+import Button from "react-bootstrap/Button";
 import { aptData } from "../apts";
+import Arrow from "react-arrow";
 
 function TabPage(props) {
+  const [sorting, setSorting] = useState(true);
+
   function sort(a, b) {
-    if (props.type.sorting) return a - b;
+    if (sorting) return a - b;
     else return b - a;
   }
   const apts = aptData.filter(
@@ -20,6 +24,21 @@ function TabPage(props) {
   });
   return (
     <Container>
+      <Row style={{ marginLeft: 0, marginRight: 0, marginBottom: 5 }}>
+        <Col style={{ textAlign: "right" }}>
+          Price <t />
+          <Arrow
+            direction={sorting ? "up" : "down"}
+            shaftWidth={10}
+            shaftLength={12}
+            headWidth={20}
+            headLength={13}
+            fill="gray"
+            strokeWidth={2}
+            onClick={() => setSorting(!sorting)}
+          />
+        </Col>
+      </Row>
       <Col>
         {Object.values(apts).map((apt, index) => (
           <div>
