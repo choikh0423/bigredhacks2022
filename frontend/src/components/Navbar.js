@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
@@ -9,6 +10,7 @@ import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
 
 function Navigation() {
+  const [key, setKey] = useState("Studio");
   let navigate = useNavigate();
 
   const logoContainer = styled.div`
@@ -36,9 +38,13 @@ function Navigation() {
             style={{ maxHeight: "100px" }}
             navbarScroll
           >
-            <NavDropdown title="Room Type" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#studio">Studio</NavDropdown.Item>
-              <NavDropdown.Item href="#onebed">1 Bedroom</NavDropdown.Item>
+            <NavDropdown title={key} id="navbarScrollingDropdown">
+              <NavDropdown.Item onSelect={() => setKey("Studio")}>
+                Studio
+              </NavDropdown.Item>
+              <NavDropdown.Item onSelect={() => setKey(" 1Bedroom")}>
+                1 Bedroom
+              </NavDropdown.Item>
               <NavDropdown.Item href="#twobeds">2 Bedrooms</NavDropdown.Item>
               <NavDropdown.Item href="#threebeds">3 Bedrooms</NavDropdown.Item>
               <NavDropdown.Item href="#fourbeds">4 Bedrooms</NavDropdown.Item>

@@ -11,8 +11,15 @@ function MainTabs() {
   const [key, setKey] = useState("studio");
 
   return (
-    <div style={{ display: "block", padding: 10 }}>
-      <h3>2023-2024 Leases</h3>
+    <div
+      style={{
+        display: "block",
+        padding: 10,
+        marginLeft: "10px",
+        marginRight: "10px",
+      }}
+    >
+      <h3 align="left">2023-2024 Leases</h3>
       <Tabs
         id="controlled-tab-example"
         activeKey={key}
