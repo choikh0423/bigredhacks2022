@@ -1,8 +1,12 @@
 import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
+import { Routes, Link, Route, useNavigate} from "react-router-dom";
+
 
 function AptCard(props) {
+  let navigate = useNavigate();
+
   console.log(props);
   const aptName = props.apt.apt.aptName;
   const address = props.apt.apt.address;
@@ -14,7 +18,7 @@ function AptCard(props) {
       ? "1 Bed"
       : props.apt.apt.rooms + " Beds";
   return (
-    <Card style={{ textAlign: "left" }}>
+    <Card style={{ textAlign: "left", cursor: "pointer"}} onClick={()=>{navigate(`/detail/${aptName}/${roomType}`)}}>
       <Card.Header as="h5">{address}</Card.Header>
       <Card.Body>
         <Row>

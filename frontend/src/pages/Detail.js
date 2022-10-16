@@ -105,6 +105,7 @@ function Detail(props) {
         );
     }
 
+
     function showRating(count, rating) {
         return (
             <div>

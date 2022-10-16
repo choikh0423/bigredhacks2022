@@ -20,7 +20,6 @@ from main import views
 
 router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
-router.register(r'groups', views.GroupViewSet)
 router.register(r'apartments', views.ApartmentViewSet)
 
 # Wire up our API using automatic URL routing.

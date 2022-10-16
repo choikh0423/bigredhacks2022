@@ -30,14 +30,14 @@ class LeaseData(models.Model):
   contract_date = models.DateField(default=datetime.date.today, blank=True, null=True)
   lease_type = models.CharField(max_length=20, choices=LEASE_TYPE_CHOICES, default="One Year Lease")
   price = models.IntegerField(default=0)
-  flat_type = models.CharField(max_length=20, choices=FLAT_TYPE_CHOICES, default="Studio")
+  flat_type = models.IntegerField(default=0)
 
   def __str__(self):
     return f"{self.user}, {self.apartment}, {self.lease_term}"
 
 class Statistics(models.Model):
   apartment = models.ForeignKey(Apartment, on_delete=models.CASCADE, null=True, related_name='stat_apartment')
-  flat_type = models.CharField(max_length = 20, default="Studio", choices=FLAT_TYPE_CHOICES)
+  flat_type = models.IntegerField(default=0)
   one_year_data = models.IntegerField(default=0)
   two_year_data = models.IntegerField(default=0)
   three_year_data = models.IntegerField(default=0)

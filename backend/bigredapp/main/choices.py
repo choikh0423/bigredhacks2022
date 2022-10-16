@@ -41,6 +41,8 @@ FLAT_TYPE_CHOICES = (
   ("4 Bed or More", "4 Bed or More")
 )
 
+FLAT_TYPE_CHOICES_LIST = ["Studio", "1 Bed", "2 Bed", "3 Bed", "4 Bed or More"]
+
 #Choice List for Ratings
 RATING_CHOICES = (
   (1, "1"),
