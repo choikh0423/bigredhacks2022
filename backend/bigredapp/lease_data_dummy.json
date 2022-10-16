@@ -15,19 +15,6 @@
 	"pk": 2,
 	"model": "main.leasedata",
 	"fields": {
-		"user": 2,
-		"apartment": 1,
-		"lease_term": "2023-2024",
-		"contract_date": "2022-10-01",
-		"lease_type": "One Year Lease",
-		"price": 1650,
-		"flat_type": 0
-	}
-},
-{
-	"pk": 3,
-	"model": "main.leasedata",
-	"fields": {
 		"user": 3,
 		"apartment": 1,
 		"lease_term": "2022-2023",
@@ -38,7 +25,7 @@
 	}
 },
 {
-	"pk": 4,
+	"pk": 3,
 	"model": "main.leasedata",
 	"fields": {
 		"user": 3,
@@ -51,7 +38,7 @@
 	}
 },
 {
-	"pk": 5,
+	"pk": 4,
 	"model": "main.leasedata",
 	"fields": {
 		"user": 5,
@@ -64,7 +51,7 @@
 	}
 },
 {
-	"pk": 6,
+	"pk": 5,
 	"model": "main.leasedata",
 	"fields": {
 		"user": 2,
@@ -72,12 +59,12 @@
 		"lease_term": "2023-2024",
 		"contract_date": "2022-10-01",
 		"lease_type": "One Year Lease",
-		"price": 1400,
-		"flat_type": 2
+		"price": 1600,
+		"flat_type": 0
 	}
 },
 {
-	"pk": 7,
+	"pk": 6,
 	"model": "main.leasedata",
 	"fields": {
 		"user": 3,
@@ -88,4 +75,31 @@
 		"price": 1700,
 		"flat_type": 0
 	}
-}]
+},
+{
+	"pk": 7,
+	"model": "main.leasedata",
+	"fields": {
+		"user": 4,
+		"apartment": 5,
+		"lease_term": "2023-2024",
+		"contract_date": "2022-10-01",
+		"lease_type": "One Year Lease",
+		"price": 2400,
+		"flat_type": 0
+	}
+},
+{
+	"pk": 8,
+	"model": "main.leasedata",
+	"fields": {
+		"user": 5,
+		"apartment": 4,
+		"lease_term": "2023-2024",
+		"contract_date": "2022-10-01",
+		"lease_type": "One Year Lease",
+		"price": 2000,
+		"flat_type": 0
+	}
+}
+]

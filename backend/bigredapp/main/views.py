@@ -20,7 +20,7 @@ class UserViewSet(viewsets.ModelViewSet):
     API endpoint that allows users to be viewed or edited.
     """
     queryset = User.objects.all().order_by('-date_joined')
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     
     def get_serializer_class(self):
@@ -71,24 +71,37 @@ class ApartmentViewSet(viewsets.ModelViewSet):
     """
     queryset = Apartment.objects.all()
     serializer_class = ApartmentSerializer
-    permission_classes = [permissions.IsAuthenticated]
+    permission_classes = [permissions.AllowAny]
 
     # simple get apartment
     # pk, aptname, rooms, addresses, price
 
     @action(detail=False, methods=['get'])
     def get_apartment_info(self, request):
+        apartments = Apartment.objects.all()
+        response_dict = {}
+
+        lease_data = LeaseData.objects.all().filter(lease_term=LEASE_TERM_CHOICES[0][0])
+
+        apartment_flat_dict = {}
+        for lease in lease_data:
+            lease_dict = lease.__dict__
+            if lease_dict['apartment_id'] in apartment_flat_dict and lease_dict['flat_type'] not in apartment_flat_dict[lease_dict['apartment_id']]:
+                apartment_flat_dict[lease_dict['apartment_id']].append(lease_dict['flat_type'])
+            else:
+                apartment_flat_dict[lease_dict['apartment_id']] = [lease_dict['flat_type']]
+            
+        print(apartment_flat_dict)
+                
+        print(lease_dict)
+        for key in apartment_flat_dict:
+            flat_type_list = apartment_flat_dict[key]
+            for cur_flat_type in flat_type_list:
+                specific_lease_data = LeaseData.objects.all().filter(apartment=key, flat_type=cur_flat_type, lease_term=LEASE_TERM_CHOICES[0][0])
+        apartment_dict = Apartment.objects.get(pk=lease_dict['apartment_id']).__dict__
+
+
         pass
-        # apartments = Apartment.objects.all()
-        # response_dict = {}
-        
-
-        # for apt in apartments:
-        #     serializer = self.get_serializer(apt)
-
-
-        #     apt_dict = apt.__dict__
-        #     print(apt_dict["id"])
 
     @action(detail=False, methods=['get'])
     def get_apartment_detail(self, request):

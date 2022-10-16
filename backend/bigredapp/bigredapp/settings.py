@@ -25,12 +25,12 @@ SECRET_KEY = 'django-insecure-#5a%wz(i0y3i45+(bc_^l%35o_00+ggc+nmakn$!0#$_&rm(_%
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
-
+ALLOWED_HOSTS=['*']
 
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'main',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -42,16 +42,26 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'django.middleware.security.SecurityMiddleware',
-    'django.contrib.sessions.middleware.SessionMiddleware',
-    'django.middleware.common.CommonMiddleware',
-    'django.middleware.csrf.CsrfViewMiddleware',
-    'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
+    "django.middleware.csrf.CsrfViewMiddleware",
+    "django.contrib.auth.middleware.AuthenticationMiddleware",
+    "django.contrib.messages.middleware.MessageMiddleware",
+    "django.middleware.clickjacking.XFrameOptionsMiddleware",
 ]
 
+CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOW_CREDENTIALS = False
+
+# CORS_ALLOWED_ORIGINS = [
+#     'https://3014-128-84-125-197.ngrok.io',
+#     ]
+
 ROOT_URLCONF = 'bigredapp.urls'
+
+
 
 TEMPLATES = [
     {
