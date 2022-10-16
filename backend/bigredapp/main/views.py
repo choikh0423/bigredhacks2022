@@ -70,7 +70,6 @@ class ApartmentViewSet(viewsets.ModelViewSet):
     API endpoint that allows Apartments to be viewed or edited.
     """
     queryset = Apartment.objects.all()
-    serializer_class = ApartmentSerializer
     permission_classes = [permissions.AllowAny]
 
     def get_serializer_class(self):
@@ -165,10 +164,10 @@ class ApartmentViewSet(viewsets.ModelViewSet):
         """
         Create Lease Data
         """
-        
-        user_pk = request.POST['user']
+
+        user_pk = request.POST['user_id']
         user = User.objects.get(id=user_pk)
-        apt_pk = request.POST['apartment']
+        apt_pk = request.POST['apartment_id']
         apt = Apartment.objects.get(id=apt_pk)
         lease_term = request.POST['lease_term']
         contract_date = request.POST['contract_date']
@@ -188,8 +187,8 @@ class ApartmentViewSet(viewsets.ModelViewSet):
         lease_data_data.save()
        
         lease_data_dict = {
-            'user': user_pk,
-            'apartment': apt_pk,
+            'user_id': user_pk,
+            'apartment_id': apt_pk,
             'lease_term': lease_term,
             'contract_date': contract_date,
             'lease_type': lease_type,
