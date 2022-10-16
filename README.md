@@ -1,5 +1,13 @@
 # IthacaAPTS.fyi - bigredhacks2022
 
+<p align="center">
+    <img 
+    width="500"
+    height="500"
+    src="https://user-images.githubusercontent.com/57926472/162923906-efea1e84-8af5-481e-b8a5-a16c3fe828d6.png"
+  >
+</p>
+
 ## Inspiration
 After living on-campus for the first two years of Cornell, it can be a daunting task for students to look for off-campus housing. In order to facilitate this process, we created a website that accumulates information about all of the off-campus housing in Cornell!
 
