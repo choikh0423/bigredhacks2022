@@ -46,6 +46,7 @@ function AddNew() {
       .then((response) => {
         console.log(response.status);
         console.log(response.data);
+        window.location.replace("http://127.0.0.1:3000/");
       });
   };
 
