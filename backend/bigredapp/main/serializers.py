@@ -35,11 +35,12 @@ class ApartmentSerializer(serializers.HyperlinkedModelSerializer):
 
 class LeaseDataSerializer(serializers.Serializer):
     # initialize fields
-    user = serializers.IntegerField()
-    apartment = serializers.IntegerField()
+    user_id = serializers.IntegerField()
+    apartment_id = serializers.IntegerField()
     lease_term = serializers.CharField()
     contract_date = serializers.DateField()
     lease_type = serializers.CharField()
     price = serializers.IntegerField()
     flat_type = serializers.IntegerField()
+
     
