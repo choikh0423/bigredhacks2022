@@ -78,16 +78,17 @@ class ApartmentViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['get'])
     def get_apartment_info(self, request):
-        apartments = Apartment.objects.all()
-        response_dict = {}
+        pass
+        # apartments = Apartment.objects.all()
+        # response_dict = {}
         
 
-        for apt in apartments:
-            serializer = self.get_serializer(apt)
+        # for apt in apartments:
+        #     serializer = self.get_serializer(apt)
 
 
-            apt_dict = apt.__dict__
-            print(apt_dict["id"])
+        #     apt_dict = apt.__dict__
+        #     print(apt_dict["id"])
 
     @action(detail=False, methods=['get'])
     def get_apartment_detail(self, request):
@@ -118,7 +119,7 @@ class ApartmentViewSet(viewsets.ModelViewSet):
         lease_data = LeaseData.objects.all().filter(apartment=pk, flat_type=flat_type, lease_term=LEASE_TERM_CHOICES[0][0])
         if not lease_data.exists():
             raise Http404
-            
+
         price_sum = 0
         response_dict['lease_data'] = []
         for lease in lease_data:
