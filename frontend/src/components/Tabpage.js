@@ -4,11 +4,23 @@ import Col from "react-bootstrap/esm/Col";
 import Row from "react-bootstrap/esm/Row";
 import AptCard from "./Aptcard";
 import Button from "react-bootstrap/Button";
-import { aptData } from "../apts";
+// import { aptData } from "../apts";
 import Arrow from "react-arrow";
+import axios from "axios";
 
 function TabPage(props) {
   const [sorting, setSorting] = useState(true);
+  const [aptData, setAptData] = useState([]);
+
+  const getData = async () => {
+    const { data } = await axios.get(
+      `http://127.0.0.1:8000/apartments/get_apartment_info/`
+    );
+    setAptData(data.info);
+  };
+  useEffect(() => {
+    getData();
+  }, []);
 
   function sort(a, b) {
     if (sorting) return a - b;
