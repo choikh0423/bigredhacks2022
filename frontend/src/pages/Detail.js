@@ -104,18 +104,26 @@ function Detail(props) {
   }
 
   function aptDropdown() {
+    console.log(type);
+    const roomType = type == 0 ? "Studio" :
+                   type == 1 ? "1 bed" :
+                   type == 2 ? "2 beds" :
+                   type == 3 ? "3 beds" :
+                   type == 4 ? "4 beds" :
+                   "5+ beds";
     return (
       <Dropdown>
         <Dropdown.Toggle variant="success" id="dropdown-basic">
-          Studio
+          {roomType}
         </Dropdown.Toggle>
 
         <Dropdown.Menu>
-          <Dropdown.Item href="#/action-1">1 bedroom</Dropdown.Item>
-          <Dropdown.Item href="#/action-2">2 bedrooms</Dropdown.Item>
-          <Dropdown.Item href="#/action-3">3 bedrooms</Dropdown.Item>
-          <Dropdown.Item href="#/action-4">4+ bedrooms</Dropdown.Item>
-          <Dropdown.Item href="#/action-5">Studio</Dropdown.Item>
+          <Dropdown.Item href="#/action-0">Studio</Dropdown.Item>
+          <Dropdown.Item href="#/action-1">1 bed</Dropdown.Item>
+          <Dropdown.Item href="#/action-2">2 beds</Dropdown.Item>
+          <Dropdown.Item href="#/action-3">3 beds</Dropdown.Item>
+          <Dropdown.Item href="#/action-4">4 beds</Dropdown.Item>
+          <Dropdown.Item href="#/action-5">5+ beds</Dropdown.Item>
         </Dropdown.Menu>
       </Dropdown>
     );
