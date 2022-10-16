@@ -8,7 +8,7 @@
 		"contract_date": "2021-08-01",
 		"lease_type": "One Year Lease",
 		"price": 1350,
-		"flat_type": "Studio"
+		"flat_type": 0
 	}
 },
 {
@@ -21,7 +21,7 @@
 		"contract_date": "2022-10-01",
 		"lease_type": "One Year Lease",
 		"price": 1650,
-		"flat_type": "Studio"
+		"flat_type": 0
 	}
 },
 {
@@ -34,7 +34,7 @@
 		"contract_date": "2021-10-01",
 		"lease_type": "One Year Lease",
 		"price": 1255,
-		"flat_type": "2 Bed"
+		"flat_type": 2
 	}
 },
 {
@@ -47,7 +47,7 @@
 		"contract_date": "2021-10-01",
 		"lease_type": "One Year Lease",
 		"price": 1325,
-		"flat_type": "Studio"
+		"flat_type": 0
 	}
 },
 {
@@ -60,7 +60,7 @@
 		"contract_date": "2021-10-01",
 		"lease_type": "One Year Lease",
 		"price": 1400,
-		"flat_type": "3 Bed"
+		"flat_type": 3
 	}
 },
 {
@@ -73,7 +73,7 @@
 		"contract_date": "2022-10-01",
 		"lease_type": "One Year Lease",
 		"price": 1400,
-		"flat_type": "2 Bed"
+		"flat_type": 2
 	}
 },
 {
@@ -86,6 +86,6 @@
 		"contract_date": "2022-10-01",
 		"lease_type": "One Year Lease",
 		"price": 1700,
-		"flat_type": "Studio"
+		"flat_type": 0
 	}
 }]
