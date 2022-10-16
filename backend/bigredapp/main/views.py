@@ -165,13 +165,39 @@ class ApartmentViewSet(viewsets.ModelViewSet):
         """
         Create Lease Data
         """
-        pass
-        # print(request.POST['user_pk'])
+        
+        user_pk = request.POST['user']
+        user = User.objects.get(id=user_pk)
+        apt_pk = request.POST['apartment']
+        apt = Apartment.objects.get(id=apt_pk)
+        lease_term = request.POST['lease_term']
+        contract_date = request.POST['contract_date']
+        lease_type = request.POST['lease_type']
+        price = request.POST['price']
+        flat_type = request.POST['flat_type']
 
-        # user_pk = request.POST['user_pk']
+        lease_data_data = LeaseData(
+            user=user,
+            apartment=apt,
+            lease_term=lease_term,
+            contract_date=contract_date,
+            lease_type = lease_type,
+            price = price,
+            flat_type = flat_type
+        )
+        lease_data_data.save()
+       
+        lease_data_dict = {
+            'user': user_pk,
+            'apartment': apt_pk,
+            'lease_term': lease_term,
+            'contract_date': contract_date,
+            'lease_type': lease_type,
+            'price': price,
+            'flat_type': flat_type
+        }
 
-                                
-        # # serializer = self.get_serializer(user)
-        # pass
-        # return Response(serializer.data)
+        serializer = self.get_serializer(lease_data_dict)
+    
+        return Response(serializer.data)
         
