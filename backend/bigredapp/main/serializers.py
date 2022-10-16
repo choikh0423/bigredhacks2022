@@ -8,7 +8,7 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = User
         # Tuple of serialized model fields (see link [2])
-        fields = [ "email", "username"]
+        fields = ["pk", "email", "username"]
     
 class CreateUserSerializer(serializers.HyperlinkedModelSerializer):
 
@@ -35,7 +35,10 @@ class ApartmentSerializer(serializers.HyperlinkedModelSerializer):
 
 class LeaseDataSerializer(serializers.Serializer):
     # initialize fields
+    user_pk = serializers.IntegerField()
+    apt_pk = serializers.IntegerField()
+    flat_type = serializers.IntegerField()
     contract_date = serializers.DateField()
+    price = serializers.IntegerField()
     lease_term = serializers.CharField()
     lease_type = serializers.CharField()
-    price = serializers.IntegerField()
