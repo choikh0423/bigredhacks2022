@@ -25,7 +25,13 @@ function TabPage(props) {
   return (
     <Container>
       <Row style={{ marginLeft: 0, marginRight: 0, marginBottom: 5 }}>
-        <Col style={{ textAlign: "right" }}>
+        {/* <div style={{ textAlign: "right" }}>Maximum Price</div>
+        <div style={{ textAlign: "right" }}>
+          <form class="multi-range-field">
+            <input id="multi6" class="multi-range" type="range" />
+          </form>
+        </div> */}
+        <div style={{ textAlign: "right" }}>
           Price <t />
           <Arrow
             direction={sorting ? "up" : "down"}
@@ -37,7 +43,7 @@ function TabPage(props) {
             strokeWidth={2}
             onClick={() => setSorting(!sorting)}
           />
-        </Col>
+        </div>
       </Row>
       <Col>
         {Object.values(apts).map((apt, index) => (

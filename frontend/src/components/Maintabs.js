@@ -12,12 +12,6 @@ function MainTabs() {
 
   return (
     <div style={{ display: "block", padding: 10 }}>
-      <label for="customRange2" class="form-label">
-        Price Range
-      </label>
-      <form class="multi-range-field">
-        <input id="multi6" class="multi-range" type="range" />
-      </form>
       <Tabs
         id="controlled-tab-example"
         activeKey={key}
