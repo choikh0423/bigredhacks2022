@@ -12,6 +12,7 @@ function MainTabs() {
 
   return (
     <div style={{ display: "block", padding: 10 }}>
+      <h3>2023-2024 Leases</h3>
       <Tabs
         id="controlled-tab-example"
         activeKey={key}

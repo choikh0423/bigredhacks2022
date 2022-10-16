@@ -1,7 +1,7 @@
 import {useParams} from "react-router-dom";
 import {Table, Dropdown} from "react-bootstrap";
 import React, {useState, useEffect} from "react";
-import {leaseData} from "../data.js";
+// import {leaseData} from "../data.js";
 import axios from 'axios';
 import styled from "styled-components";
 import StarRatingComponent from 'react-star-rating-component';
@@ -11,21 +11,46 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 
 function Detail(props) {
-    // const [leaseData, setLeaseData] = useState(0);
+    const [leaseData, setLeaseData] = useState(0);
     let {apt} = useParams();
     let {type} = useParams();
     console.log(apt, type)
 
-    // useEffect(() => {
-    //     axios.get('/data-endpoint/'+apt+'/'+type
-    //              ).then((res)=>{console.log('@@', res.data);
-    //              setLeaseData(res.data);
-    //             });
-    // }, [apt, type])
+    // const optionsRequest = {
+    //     method: "POST",
+    //     headers: {
+    //         Accept: "application/json",
+    //         "Content-Type": "application/json;charset=UTF-8",
+    //     },
+    //     body: JSON.stringify({
+    //       a: 10,
+    //       b: 20,
+    //     }),
+    // };
+
+    // fetch(`https://e6cd-128-84-125-34.ngrok.io/apartments/get_apartment_detail/?id=${apt}&flat_type=${type}`, optionsRequest)
+    //     .then((response)=>)
+
+    // {
+    //     headers: {
+    //         'Access-Control-Allow-Credentials':true
+
+    //     }
+    // }
+    
+    useEffect(() => {
+        axios.get('https://e6cd-128-84-125-34.ngrok.io/apartments/get_apartment_detail/?id=1&flat_type=0',
+                 ).then((res)=>{console.log('@@', res.data);
+                 setLeaseData(res.data);
+                });
+    }, [apt, type])
+
+    console.log(leaseData);
 
     const series = [{
         name: "Average Price",
         data: [1110, 1360, 1450, 1670]
+        // data: [leaseData.three_year_data, leaseData.two_year_data, leaseData.one_year_data, leaseData.current_price_data]
     }]
 
     const options = {
@@ -76,10 +101,13 @@ function Detail(props) {
                 <Card.Header>Housing Info</Card.Header>
                 <ListGroup variant="flush">
                 <ListGroup.Item>In-Unit Laundry</ListGroup.Item>
+                {/* <ListGroup.Item>{leaseData.laundry}</ListGroup.Item> */}
                 <ListGroup.Item>Gym</ListGroup.Item>
+                {/* <ListGroup.Item>{leaseData.gym ? 'Gym' : 'No gym'}</ListGroup.Item> */}
                 <ListGroup.Item>Electricity Included</ListGroup.Item>
+                {/* <ListGroup.Item>{leaseData.free_electicity ? 'Free Electricity' : 'Paid Electicity'}</ListGroup.Item> */}
                 <ListGroup.Item>Wifi router</ListGroup.Item>
-                <ListGroup.Item>Wireless</ListGroup.Item>
+                {/* <ListGroup.Item>{leaseData.free_wifi_router ? 'Free Wifi' : 'Paid Wifi'}</ListGroup.Item> */}
                 <ListGroup.Item>Collegetown </ListGroup.Item>
                 </ListGroup>
             </Card>
