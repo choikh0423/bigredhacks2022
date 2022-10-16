@@ -9,6 +9,7 @@ function AptCard(props) {
 
   console.log(props);
   const pk = props.apt.apt.pk;
+
   const aptName = props.apt.apt.aptName;
   const address = props.apt.apt.address;
   const price = props.apt.apt.price;
@@ -20,6 +21,7 @@ function AptCard(props) {
       : props.apt.apt.rooms + " Beds";
   return (
     <Card style={{ textAlign: "left", cursor: "pointer"}} onClick={()=>{navigate(`/detail/${pk}/${props.apt.apt.rooms}`)}}>
+
       <Card.Header as="h5">{address}</Card.Header>
       <Card.Body>
         <Row>

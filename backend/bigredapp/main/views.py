@@ -73,15 +73,33 @@ class ApartmentViewSet(viewsets.ModelViewSet):
     serializer_class = ApartmentSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-    @action(detail=True, methods=['get'])
-    def get_apartment_info(self, request, pk):
+    # simple get apartment
+    # pk, aptname, rooms, addresses, price
+
+    @action(detail=False, methods=['get'])
+    def get_apartment_info(self, request):
+        pass
+        # apartments = Apartment.objects.all()
+        # response_dict = {}
+        
+
+        # for apt in apartments:
+        #     serializer = self.get_serializer(apt)
+
+
+        #     apt_dict = apt.__dict__
+        #     print(apt_dict["id"])
+
+    @action(detail=False, methods=['get'])
+    def get_apartment_detail(self, request):
         """
         Get all necessary information for apartment detail
         """
 
         # Check if GET query is correct
-        if "flat_type" in request.GET and request.GET['flat_type'] in FLAT_TYPE_CHOICES_LIST:
+        if "flat_type" in request.GET and "id" in request.GET:
             flat_type = request.GET['flat_type']
+            pk = request.GET['id']
         else:
             raise Http404
 
@@ -99,6 +117,9 @@ class ApartmentViewSet(viewsets.ModelViewSet):
 
         # Calculating current year average price + serializing lease data
         lease_data = LeaseData.objects.all().filter(apartment=pk, flat_type=flat_type, lease_term=LEASE_TERM_CHOICES[0][0])
+        if not lease_data.exists():
+            raise Http404
+
         price_sum = 0
         response_dict['lease_data'] = []
         for lease in lease_data:
