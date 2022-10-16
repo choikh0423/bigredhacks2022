@@ -11,46 +11,39 @@ import ListGroup from 'react-bootstrap/ListGroup';
 
 
 function Detail(props) {
-    const [leaseData, setLeaseData] = useState(0);
+    const [leaseArray, setLeaseArray] = useState([]);
+    const [leaseData, setLeaseData] = useState({});
     let {apt} = useParams();
     let {type} = useParams();
     console.log(apt, type)
 
-    // const optionsRequest = {
-    //     method: "POST",
-    //     headers: {
-    //         Accept: "application/json",
-    //         "Content-Type": "application/json;charset=UTF-8",
-    //     },
-    //     body: JSON.stringify({
-    //       a: 10,
-    //       b: 20,
-    //     }),
-    // };
+    const url = `http://localhost:8000/apartments/get_apartment_detail/?id=${apt}&flat_type=${type}`;
+    // const leaseDataData = leaseData.lease_data;
+    console.log(url);
 
-    // fetch(`https://e6cd-128-84-125-34.ngrok.io/apartments/get_apartment_detail/?id=${apt}&flat_type=${type}`, optionsRequest)
-    //     .then((response)=>)
+    const getData = async() => {
+        const { data } = await axios.get(url);
+        console.log(data);
+        setLeaseData(data);
+        setLeaseArray(data.lease_data);
 
-    // {
-    //     headers: {
-    //         'Access-Control-Allow-Credentials':true
+    };
 
-    //     }
-    // }
-    
     useEffect(() => {
-        axios.get('https://e6cd-128-84-125-34.ngrok.io/apartments/get_apartment_detail/?id=1&flat_type=0',
-                 ).then((res)=>{console.log('@@', res.data);
-                 setLeaseData(res.data);
-                });
-    }, [apt, type])
+        getData();
+    },[]);
 
-    console.log(leaseData);
+    // useEffect(() => {
+    //     axios.get(url,
+    //              ).then((res)=>{ console.log("@@", res.data);
+    //              setLeaseData(res.data);
+    //             });
+    // }, [url, apt, type])
+    // console.log(leaseData);
 
     const series = [{
         name: "Average Price",
-        data: [1110, 1360, 1450, 1670]
-        // data: [leaseData.three_year_data, leaseData.two_year_data, leaseData.one_year_data, leaseData.current_price_data]
+        data: [leaseData.three_year_data, leaseData.two_year_data, leaseData.one_year_data, leaseData.current_price_data]
     }]
 
     const options = {
@@ -86,9 +79,9 @@ function Detail(props) {
         return (
             <tr key={index}>
                 <td></td>
-                <td>{input.contractDate}</td>
-                <td>{input.leaseTerm}</td>
-                <td>{input.leaseType}</td>
+                <td>{input.contract_date}</td>
+                <td>{input.lease_term}</td>
+                <td>{input.lease_type}</td>
                 <td>{input.price}</td>
             </tr>
         )
@@ -100,14 +93,10 @@ function Detail(props) {
             <Card style={{ width: '18rem' }}>
                 <Card.Header>Housing Info</Card.Header>
                 <ListGroup variant="flush">
-                <ListGroup.Item>In-Unit Laundry</ListGroup.Item>
-                {/* <ListGroup.Item>{leaseData.laundry}</ListGroup.Item> */}
-                <ListGroup.Item>Gym</ListGroup.Item>
-                {/* <ListGroup.Item>{leaseData.gym ? 'Gym' : 'No gym'}</ListGroup.Item> */}
-                <ListGroup.Item>Electricity Included</ListGroup.Item>
-                {/* <ListGroup.Item>{leaseData.free_electicity ? 'Free Electricity' : 'Paid Electicity'}</ListGroup.Item> */}
-                <ListGroup.Item>Wifi router</ListGroup.Item>
-                {/* <ListGroup.Item>{leaseData.free_wifi_router ? 'Free Wifi' : 'Paid Wifi'}</ListGroup.Item> */}
+                <ListGroup.Item>{leaseData.laundry}</ListGroup.Item>
+                <ListGroup.Item>{leaseData.gym ? 'Gym' : 'No gym'}</ListGroup.Item>
+                <ListGroup.Item>{leaseData.free_electicity ? 'Free Electricity' : 'Paid Electicity'}</ListGroup.Item>
+                <ListGroup.Item>{leaseData.free_wifi_router ? 'Free Wifi' : 'Paid Wifi'}</ListGroup.Item>
                 <ListGroup.Item>Collegetown </ListGroup.Item>
                 </ListGroup>
             </Card>
@@ -179,11 +168,11 @@ function Detail(props) {
             <AptInfo>
                 <GeneralInfo>
                     <InfoBox>
-                        <h1>Collegetown Center</h1>
-                        <h3>151 Dryden Rd.</h3>
+                        <h1>{leaseData.name}</h1>
+                        <h3>{leaseData.address}</h3>
                     </InfoBox>
                     <InfoBox>
-                        {showRating(130, 4)}
+                        {showRating(leaseData.number_of_reviews, leaseData.rating)}
                         {aptDropdown()}
                     </InfoBox>
                 </GeneralInfo>
@@ -197,7 +186,7 @@ function Detail(props) {
             </AptInfo>
             
             <RecentData>
-                <h2 className="main-title">Recent Lease Data</h2>
+                <h2>Recent Lease Data</h2>
 
                 <Table className="batch-table" stripped condensed hover>
                     <thead>
@@ -208,8 +197,7 @@ function Detail(props) {
                     <th>Price</th>
                     </thead>
                     <tbody>
-
-                    {Object.values(leaseData).map(renderInput)}
+                    {leaseArray.map(renderInput)}
                     </tbody>
                 </Table>
             </RecentData>

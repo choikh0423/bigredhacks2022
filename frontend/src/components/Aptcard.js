@@ -9,7 +9,6 @@ function AptCard(props) {
 
   console.log(props);
   const pk = props.apt.apt.pk;
-
   const aptName = props.apt.apt.aptName;
   const address = props.apt.apt.address;
   const price = props.apt.apt.price;
