@@ -5,13 +5,25 @@ import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import logo from "../logo.svg";
+import styled from "styled-components";
+import {useNavigate} from "react-router-dom";
+
+
 
 function Navigation() {
+  let navigate = useNavigate();
+
+  const logoContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+  `;
   return (
     <Navbar bg="light" expand="lg">
       <Container fluid>
-        <img src={logo} width="50" height="50" alt="logo" />
-        <Navbar.Brand href="#">IthacaAPTS.fyi</Navbar.Brand>
+        <logoContainer onClick={()=>{navigate('/')}} style={{cursor: "pointer"}}>
+          <img src={logo} width="50" height="50" alt="logo" />
+          <Navbar.Brand>IthacaAPTS.fyi</Navbar.Brand>
+        </logoContainer>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
           <Nav
