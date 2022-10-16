@@ -10,7 +10,7 @@ from .models import Apartment, LeaseData, Statistics
 from .choices import FLAT_TYPE_CHOICES_LIST, LEASE_TERM_CHOICES, FLAT_TYPE_CHOICES
 from rest_framework import viewsets
 from rest_framework import permissions
-from main.serializers import UserSerializer, CreateUserSerializer, LeaseDataSerializer
+from main.serializers import UserSerializer, CreateUserSerializer, LeaseDataSerializer, ApartmentGeneralSerializer
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -73,35 +73,50 @@ class ApartmentViewSet(viewsets.ModelViewSet):
     serializer_class = ApartmentSerializer
     permission_classes = [permissions.AllowAny]
 
+    def get_serializer_class(self):
+        if self.action == "create_lease_data":
+            return LeaseDataSerializer
+        return ApartmentSerializer
+
     # simple get apartment
     # pk, aptname, rooms, addresses, price
 
     @action(detail=False, methods=['get'])
     def get_apartment_info(self, request):
         apartments = Apartment.objects.all()
-        response_dict = {}
+        response_dict = {'info': []}
 
         lease_data = LeaseData.objects.all().filter(lease_term=LEASE_TERM_CHOICES[0][0])
 
         apartment_flat_dict = {}
         for lease in lease_data:
             lease_dict = lease.__dict__
-            if lease_dict['apartment_id'] in apartment_flat_dict and lease_dict['flat_type'] not in apartment_flat_dict[lease_dict['apartment_id']]:
-                apartment_flat_dict[lease_dict['apartment_id']].append(lease_dict['flat_type'])
-            else:
+            print(lease_dict['flat_type'])
+            if lease_dict['apartment_id'] not in apartment_flat_dict:
                 apartment_flat_dict[lease_dict['apartment_id']] = [lease_dict['flat_type']]
-            
-        print(apartment_flat_dict)
-                
-        print(lease_dict)
+            elif lease_dict['flat_type'] not in apartment_flat_dict[lease_dict['apartment_id']]:
+                apartment_flat_dict[lease_dict['apartment_id']].append(lease_dict['flat_type'])
+        
         for key in apartment_flat_dict:
+            
             flat_type_list = apartment_flat_dict[key]
+            apt_info = Apartment.objects.get(pk=key).__dict__
+
             for cur_flat_type in flat_type_list:
+                res = {}
+                res['pk'] = apt_info['id']
+                res['aptName'] = apt_info['name']
+                res['address'] = apt_info['address']
+                res['rooms'] = cur_flat_type
                 specific_lease_data = LeaseData.objects.all().filter(apartment=key, flat_type=cur_flat_type, lease_term=LEASE_TERM_CHOICES[0][0])
-        apartment_dict = Apartment.objects.get(pk=lease_dict['apartment_id']).__dict__
+                price_sum = 0
+                for lease in specific_lease_data:
+                    lease_dict = lease.__dict__
+                    price_sum += lease_dict["price"]
+                res['price'] = price_sum / len(specific_lease_data)
+                response_dict['info'].append(ApartmentGeneralSerializer(res).data)
 
-
-        pass
+        return Response(response_dict)
 
     @action(detail=False, methods=['get'])
     def get_apartment_detail(self, request):
@@ -144,3 +159,19 @@ class ApartmentViewSet(viewsets.ModelViewSet):
         response_dict['current_price_data'] = current_average_price
         
         return Response(response_dict)
+
+    @action(detail=False, methods=['post'])
+    def create_lease_data(self, request):
+        """
+        Create Lease Data
+        """
+        pass
+        # print(request.POST['user_pk'])
+
+        # user_pk = request.POST['user_pk']
+
+                                
+        # # serializer = self.get_serializer(user)
+        # pass
+        # return Response(serializer.data)
+        

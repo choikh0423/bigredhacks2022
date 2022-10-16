@@ -1,14 +1,13 @@
-import {useParams} from "react-router-dom";
-import {Table, Dropdown} from "react-bootstrap";
-import React, {useState, useEffect} from "react";
+import { useParams } from "react-router-dom";
+import { Table, Dropdown, Button } from "react-bootstrap";
+import React, { useState, useEffect } from "react";
 // import {leaseData} from "../data.js";
-import axios from 'axios';
+import axios from "axios";
 import styled from "styled-components";
-import StarRatingComponent from 'react-star-rating-component';
-import ReactApexChart from 'react-apexcharts'
-import Card from 'react-bootstrap/Card';
-import ListGroup from 'react-bootstrap/ListGroup';
-
+import StarRatingComponent from "react-star-rating-component";
+import ReactApexChart from "react-apexcharts";
+import Card from "react-bootstrap/Card";
+import ListGroup from "react-bootstrap/ListGroup";
 
 function Detail(props) {
     const [leaseArray, setLeaseArray] = useState([]);
@@ -100,71 +99,69 @@ function Detail(props) {
                 <ListGroup.Item>Collegetown </ListGroup.Item>
                 </ListGroup>
             </Card>
-          </div>
-        );
-      }
+      </div>
+    );
+  }
 
-    function aptDropdown() {
-        return (
-          <Dropdown>
-            <Dropdown.Toggle variant="success" id="dropdown-basic">
-              Studio
-            </Dropdown.Toggle>
-      
-            <Dropdown.Menu>
-              <Dropdown.Item href="#/action-1">1 bedroom</Dropdown.Item>
-              <Dropdown.Item href="#/action-2">2 bedrooms</Dropdown.Item>
-              <Dropdown.Item href="#/action-3">3 bedrooms</Dropdown.Item>
-              <Dropdown.Item href="#/action-4">4+ bedrooms</Dropdown.Item>
-              <Dropdown.Item href="#/action-5">Studio</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        );
-    }
+  function aptDropdown() {
+    return (
+      <Dropdown>
+        <Dropdown.Toggle variant="success" id="dropdown-basic">
+          Studio
+        </Dropdown.Toggle>
 
+        <Dropdown.Menu>
+          <Dropdown.Item href="#/action-1">1 bedroom</Dropdown.Item>
+          <Dropdown.Item href="#/action-2">2 bedrooms</Dropdown.Item>
+          <Dropdown.Item href="#/action-3">3 bedrooms</Dropdown.Item>
+          <Dropdown.Item href="#/action-4">4+ bedrooms</Dropdown.Item>
+          <Dropdown.Item href="#/action-5">Studio</Dropdown.Item>
+        </Dropdown.Menu>
+      </Dropdown>
+    );
+  }
 
-    function showRating(count, rating) {
-        return (
-            <div>
-                <StarRatingComponent 
-                name="rate" 
-                editing={false}
-                renderStarIcon={() => <span>⭐️</span>}
-                starCount={rating}
-                value={rating}
-                />
-                <p>{count} reviews</p>
-            </div>
-        )
-    }
+  function showRating(count, rating) {
+    return (
+      <div>
+        <StarRatingComponent
+          name="rate"
+          editing={false}
+          renderStarIcon={() => <span>⭐️</span>}
+          starCount={rating}
+          value={rating}
+        />
+        <p>{count} reviews</p>
+      </div>
+    );
+  }
 
-    const AptInfo = styled.div`
-    `;
-    const GeneralInfo = styled.div`
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 20px;
-    `;
+  const AptInfo = styled.div``;
+  const GeneralInfo = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
+  `;
 
-    const RecentData = styled.div`
-        padding: 20px;
-    `;
+  const RecentData = styled.div`
+    padding: 20px;
+  `;
 
-    const InfoBox = styled.div`
-        display: flex;
-        flex-direction: column;
-        padding: 16px;
-    `;
+  const InfoBox = styled.div`
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+  `;
 
-    const DetailInfo = styled.div`
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        padding: 20px;
-    `;
-    return(
-        <div>
+  const DetailInfo = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 20px;
+  `;
+  return (
+    <div>
             <AptInfo>
                 <GeneralInfo>
                     <InfoBox>
@@ -201,8 +198,8 @@ function Detail(props) {
                     </tbody>
                 </Table>
             </RecentData>
-        </div>
-    )
+    </div>
+  );
 }
 
-export default Detail
+export default Detail;
